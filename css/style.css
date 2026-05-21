@@ -17,13 +17,13 @@
     flex: 0 0 28%
   }
   h2 {
-    font-size: 48px;
+    font-size: 38px;
     color: #532C1B;
     letter-spacing: -1px;
     margin-bottom: 0;
   }
   #tagline {
-    font-size: 20px;
+    font-size: 16px;
     color: #242121;
     white-space: pre-line;
     letter-spacing: -0.1px;
@@ -90,7 +90,7 @@
     object-fit: contain;
   }  
   #description {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.4;
     color: black;
     padding: 10px;
