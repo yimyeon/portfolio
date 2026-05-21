@@ -8,10 +8,9 @@
     gap: 24px;
   }
   .doodle{
-    width: 140px;
+    width: 114px;
     height: auto;
     opacity: 1;
-    transform: rotate(0);
   }
   .title-area {
     flex: 0 0 28%
@@ -39,8 +38,8 @@
   }
   .nav a{
     display:inline-block;
-    font-size: 20px;
-    padding:10px 26px;
+    font-size: 16px;
+    padding:8px 20px;
     text-decoration:none;
     color:#532C1B;
     background-image: url("../imgs/line_1.png");
@@ -49,8 +48,8 @@
 
   }
   .nav-icon {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     display: block;
   }
   .nav a.active {
@@ -66,8 +65,8 @@
   .viewer {
     display: flex;
     align-items: flex-start; /* main image와 grid 상단 맞추기 */
-    gap: 40px;
-    margin-top: 20px;
+    gap: 32px;
+    margin-top: 16px;
   }
   .main-panel {
     width: 25%;
@@ -104,16 +103,16 @@
     gap: 24px;
   }
   .grid.cover{
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));/*fraction (비율)*/
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));/*fraction (비율)*/
   }
   .grid.leaflet{
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   }
   .grid.illustration{
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
   .item img{
-    margin: 0 10px 0px 10px;
+    margin: 0 8px 0px 8px;
     cursor: pointer;
     transition: box-shadow 0.2s ease, transform 0.3s ease;
   }
