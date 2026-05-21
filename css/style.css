@@ -1,0 +1,170 @@
+  body {
+    font-family: pretendard;
+    padding: 4px 50px;
+    background: #e5e5e5;
+  }
+  .header {
+    display: flex;
+    gap: 24px;
+  }
+  .doodle{
+    width: 140px;
+    height: auto;
+    opacity: 1;
+    transform: rotate(0);
+  }
+  .title-area {
+    flex: 0 0 28%
+  }
+  h2 {
+    font-size: 48px;
+    color: #532C1B;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+  }
+  #tagline {
+    font-size: 20px;
+    color: #242121;
+    white-space: pre-line;
+    letter-spacing: -0.1px;
+    margin-bottom: 8px;
+  }
+  .nav {
+    display: flex;
+    padding: 30px 0 0 30px;
+    flex: 1;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav a{
+    display:inline-block;
+    font-size: 20px;
+    padding:10px 26px;
+    text-decoration:none;
+    color:#532C1B;
+    background-image: url("../imgs/line_1.png");
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+
+  }
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+  .nav a.active {
+    color: #242121;
+    background-image: url("../imgs/line_2.png");
+  }
+  .nav a:hover {
+    transform:rotate(2deg);
+    background-image: url("../imgs/line_2.png");
+    border: 2px solid transparent;
+    color: #242121;
+  }
+  .viewer {
+    display: flex;
+    align-items: flex-start; /* main image와 grid 상단 맞추기 */
+    gap: 40px;
+    margin-top: 20px;
+  }
+  .main-panel {
+    width: 25%;
+    flex: 0 0 28%;
+  }
+  .main-panel img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    transition: opacity 0.25s ease;
+    box-shadow: 4px 4px 2px rgba(0,0,0,0.4);
+  }  
+  .viewer.leaflet .main-panel {
+    flex: 0 0 45%;
+    width: 45%;
+  }
+  .viewer.leaflet #mainImage{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }  
+  #description {
+    font-size: 18px;
+    line-height: 1.4;
+    color: black;
+    padding: 10px;
+    border: 1px solid transparent;
+  }  
+  .sub-panel {
+    flex: 1;
+  }  
+  .grid {
+    display: grid;
+    gap: 24px;
+  }
+  .grid.cover{
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));/*fraction (비율)*/
+  }
+  .grid.leaflet{
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  }
+  .grid.illustration{
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  .item img{
+    margin: 0 10px 0px 10px;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.3s ease;
+  }
+  .cover .item img {
+    width: 100%;
+    aspect-ratio:4/5;
+    border-radius: 4px;
+    box-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+    object-fit:cover;
+  }
+  .leaflet .item img{
+    width:100%;
+    aspect-ratio:3/2;
+    border-radius: 4px;
+    box-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+    object-fit:cover;
+  }
+  .illustration .item img {
+    width: 100%;
+    aspect-ratio:4/5;
+    border-radius: 4px;
+    box-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+    object-fit:cover;
+  }
+  .item img:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 3px 6px rgba(0,0,0,0.4);
+  } 
+  body {
+    opacity: 0.8;
+  }
+  body.loaded { 
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+  .fade-up {
+    animation: fadeUp 0.4s ease;
+  }
+  @keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateX(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
