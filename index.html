@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section class="portfolio">
+  <div class="header">
+    <div class="title-area">
+      <h2 id="title">Cover Design</h2>
+      <p id="tagline">tagline</p>
+    </div>
+    <img src="imgs/doodle_1.png" class="doodle">
+    <div class="nav" id="nav"></div>
+  </div>
+
+  <div class="viewer">
+    <div class="main-panel">
+      <img id="mainImage" src="imgs/cover/cover_01.jpg">
+      <p id="description"></p>
+    </div>
+
+    <div class="sub-panel">
+      <div class="grid" id="grid"></div> <!--썸네일 이미지들 스크립트에서 생성-->
+    </div>
+  </div>
+</section>
+
+<script src="js/data.js"></script>
+<script>
+
+// 1. 기본 설정
+const defaultCategory = "cover";
+
+// 2. NAV 만들기
+function renderNav() {
+  const nav = document.getElementById("nav");
+  nav.innerHTML = "";
+
+  categories.forEach(item => {
+    const a = document.createElement("a");
+    a.href = "#"; //임시링크
+    a.setAttribute("data-key", item.key);
+
+    a.onclick = () => changeCategory(item.key); // 아래 만들예정
+
+    const img = document.createElement("img");
+    img.src = item.icon;
+    img.className = "nav-icon";
+
+    const span = document.createElement("span");
+    span.innerText = item.label;
+
+    a.appendChild(img);
+    a.appendChild(span);
+    nav.appendChild(a);
+  });
+}
+
+// 3. GRID 만들기
+function renderImages(category) {
+  const grid = document.getElementById("grid"); //grid 요소 가져오기
+  grid.innerHTML = ""; //기존 이미지 제거, 초기화
+  grid.className = `grid ${category}`; //grid 클래스 + category 클래스 (cover, leaflet)
+
+  const works = portfolioData[category].works;
+    // portfolioData에서 category에 해당하는 데이터의 works 배열 가져오기
+  works.forEach(work => {
+    const item = document.createElement("div");
+    item.className = "item";
+    //각 이미지마다 다른 데이터를 가진 클릭 버튼을 만든다
+    item.onclick = () => changeImage(work.img, category, work.desc);
+              //클릭할 때 실행해
+    item.innerHTML = `
+      <img src="imgs/${category}/${work.img}"> 
+    `;         //imgs/cover/cover_01.jpg
+
+    grid.appendChild(item);
+  });
+}
+
+// 4. 이미지 바꾸기
+function changeImage(img, category, desc) {
+  document.getElementById("mainImage").src = `imgs/${category}/${img}`; //imgs/cover/cover_01.jpg
+  document.getElementById("description").innerText = desc || ""; //desc가 있으면 desc, 없으면 빈문자열
+}
+
+// 5. 카테고리 바꾸기
+function changeCategory(category) {
+  const viewer = document.querySelector(".viewer");
+  viewer.className = `viewer ${category}`;
+
+  const categoryData = portfolioData[category];
+  const firstWork = categoryData.works[0]; // 메인 이미지 기본 값
+
+  renderImages(category); //썸네일 이미지들 새로 생성
+
+  document.getElementById("title").innerText = categoryData.title;
+  document.getElementById("tagline").innerText = categoryData.tagline;
+
+  document.querySelectorAll(".nav a").forEach(el => {
+    el.classList.remove("active");
+  });
+
+  document.querySelector(`[data-key="${category}"]`)?.classList.add("active");
+  // ?. (옵셔널 체이닝), 없으면 에러 내지 말고 그냥 넘어가라
+  if (firstWork) {
+    changeImage(firstWork.img, category, firstWork.desc);
+  }
+}
+
+// 6. 시작하기
+renderNav();
+changeCategory(defaultCategory);
+
+//----------------------
+
+</script>
+
+</body>
+</html>
